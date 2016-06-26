@@ -9,7 +9,7 @@
     <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="confirm_password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="WebApp1Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebApp1Entities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Register" EntityType="Self.Register" />
   </EntityContainer>
 </Schema>

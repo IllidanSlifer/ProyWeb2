@@ -12,7 +12,7 @@ namespace WebApp1.Controllers
 {
     public class RegistersController : Controller
     {
-        private WebApp1Entities1 db = new WebApp1Entities1();
+        private WebApp1Entities2 db = new WebApp1Entities2();
 
         // GET: Registers
         public ActionResult Index()
