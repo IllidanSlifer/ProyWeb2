@@ -261,3 +261,4 @@ C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.Mig
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.csproj.GenerateResource.Cache
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.dll
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.pdb
+C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.csprojResolveAssemblyReference.cache

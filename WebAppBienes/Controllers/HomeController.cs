@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web;
 
 namespace IdentitySample.Controllers
 {
@@ -9,14 +10,14 @@ namespace IdentitySample.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize /*(Roles="Admin")*/ ]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
 
             return View();
         }
-
+        //[Authorize (Roles ="User")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
