@@ -87,8 +87,14 @@ namespace IdentitySample.Models
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            //await configSendGridasync(message);
             return Task.FromResult(0);
         }
+        //prueba que no estaba aqui y lo implemente a ve si funciona
+        //private Task configSendGridasync(IdentityMessage message)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
     public class SmsService : IIdentityMessageService
