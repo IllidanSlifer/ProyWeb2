@@ -18,7 +18,7 @@ namespace WebAppBienes.Controllers
                 context = new ApplicationDbContext();
             }
 
-            //[Authorize(Roles = "Admin")]
+            [Authorize(Roles = "Admin")]
             // GET: Role
             public ActionResult Index()
             {
@@ -26,7 +26,7 @@ namespace WebAppBienes.Controllers
                 return View(Roles);
             }
 
-            //[Authorize(Roles = "Admin")]
+            [Authorize(Roles = "Admin")]
             public ActionResult Create()
             {
                 var Role = new IdentityRole();
