@@ -1,20 +1,61 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    var eMailSent = false;
+    if (IsPost)
+    {
+        eMailSent = true;
+        var eMailSubject = Request["subject"];
+        if (eMailSubject == null)
+        {
+            eMailSubject = "Asunto vacío";
+        }
+        var eMailMessage = Request["message"];
+        if (eMailMessage == null)
+        {
+            eMailMessage = "Mensaje vacío";
+        }
+
+        WebMail.SmtpServer = "smtp.live.com";
+        WebMail.SmtpPort = 587;
+        WebMail.EnableSsl = true;
+        WebMail.UserName = "chacon9595@hotmail.com";
+        WebMail.From = "chacon9595@hotmail.com";
+        WebMail.Password = "Rtchacon";
+        WebMail.Send(to: "robertchsoto@gmail.com", subject: eMailSubject, body: eMailMessage);
+        
+    } }
+<meta http-equiv="refresh" content="30">
+
+@{
+    ViewBag.Title = "Contact US";
 }
+
 <hgroup>
     <h2>@ViewBag.Title.</h2>
     <h3>@ViewBag.Message</h3>
 </hgroup>
 <div>
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
+        KeroSells<br />
+        Cuidad Quesada<br />
+        <abbr title="Phone">Phone:</abbr>
+        +506 8583 1208
     </address>
 
     <address>
-        <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <i class="icon-envelope"></i><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        <i class="icon-envelope"></i><strong>Support:</strong> <a href="mailto:illidanslifer@gmail.com">illidanslifer@gmail.com</a><br />
+        <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:robertchsoto@gmail.com">robertchsoto@gmail.com</a><br /><br />
+        <strong>
+            Contact Us:
+        </strong>
+        <form method="POST" id="usrform">
+            User Name:<br>
+            <input type="text" name="subject" id="subject">
+            <br><br>
+            <textarea rows="4" cols="50" name="message" id="message" form="usrform">Message...</textarea><br><br>
+            <input type="submit" value="Submit">
+        </form><br /><br />
+
+
+
     </address>
 </div>
