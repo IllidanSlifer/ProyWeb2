@@ -34,6 +34,7 @@ namespace IdentitySample.Models
 
         [Display(Name = "Remember this browser?")]
         public bool RememberBrowser { get; set; }
+        public bool RememberMe { get; internal set; }
     }
 
     public class ForgotViewModel

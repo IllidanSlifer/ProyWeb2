@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
+//using shanuMVCUserRoles.Models;
 
 namespace IdentitySample.Controllers
 {
@@ -81,7 +83,7 @@ namespace IdentitySample.Controllers
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
                     ViewBag.errorMessage = "You must have a confirmed email to log on.";
-                    return View("Error");
+                    return View("ConfirmEmail");
                 }
             }
 
@@ -117,20 +119,29 @@ namespace IdentitySample.Controllers
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
-        public async Task<ActionResult> VerifyCode(string provider, string returnUrl)
+        public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
             }
-            var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
-            if (user != null)
-            {
-                ViewBag.Status = "For DEMO purposes the current " + provider + " code is: " + await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
-            }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl });
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
+        //public async Task<ActionResult> VerifyCode(string provider, string returnUrl)
+        //{
+        //    // Require that the user has already logged in via username/password or external login
+        //    if (!await SignInManager.HasBeenVerifiedAsync())
+        //    {
+        //        return View("Error");
+        //    }
+        //    var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
+        //    if (user != null)
+        //    {
+        //        ViewBag.Status = "For DEMO purposes the current " + provider + " code is: " + await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
+        //    }
+        //    return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl });
+        //}
 
         //
         // POST: /Account/VerifyCode
@@ -163,6 +174,8 @@ namespace IdentitySample.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+              //                                  .ToList(), "Name", "Name");
             return View();
         }
 
@@ -173,6 +186,33 @@ namespace IdentitySample.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+            //    var result = await UserManager.CreateAsync(user, model.Password);
+            //    var message = new MailMessage();
+            //    if (result.Succeeded)
+            //    {
+
+            //        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            //        await UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+            //        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            //        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            //        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+            //        message.Body = callbackUrl;
+            //        //message.To.Add(new MailAddress(model.Email));
+            //        message.Subject = "Confirm your account";
+            //        sendMail(message, model.Email);
+            //        ViewBag.Link = callbackUrl;
+            //        return View("DisplayEmail");
+            //    }
+            //    ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            //    AddErrors(result);
+            //}
+
+            //// If we got this far, something failed, redisplay form
+            //return View(model);
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -201,6 +241,7 @@ namespace IdentitySample.Controllers
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                                     + "before you can log in.";
+                    //ViewBag.Link = callbackUrl;
 
                     return View("Info");
                     //return RedirectToAction("Index", "Home");
