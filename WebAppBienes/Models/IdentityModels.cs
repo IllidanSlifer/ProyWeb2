@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WebAppBienes.Models;
 
 namespace IdentitySample.Models
 {
@@ -25,6 +26,7 @@ namespace IdentitySample.Models
         {
         }
 
+        public DbSet<BienesModel> Bienes { get; set; }
         static ApplicationDbContext()
         {
             // Set the database intializer which is run once during application start

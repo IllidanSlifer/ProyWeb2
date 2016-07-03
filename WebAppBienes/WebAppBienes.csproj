@@ -209,6 +209,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BienesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -220,9 +221,14 @@
     <Compile Include="Migrations\201606272219294_initial.Designer.cs">
       <DependentUpon>201606272219294_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607021744467_Bienes.cs" />
+    <Compile Include="Migrations\201607021744467_Bienes.Designer.cs">
+      <DependentUpon>201607021744467_Bienes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\BienesModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -299,6 +305,11 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Bienes\Create.cshtml" />
+    <Content Include="Views\Bienes\Delete.cshtml" />
+    <Content Include="Views\Bienes\Details.cshtml" />
+    <Content Include="Views\Bienes\Edit.cshtml" />
+    <Content Include="Views\Bienes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +325,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606272219294_initial.resx">
       <DependentUpon>201606272219294_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607021744467_Bienes.resx">
+      <DependentUpon>201607021744467_Bienes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
