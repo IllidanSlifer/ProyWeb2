@@ -315,6 +315,7 @@
     <Content Include="Views\Bienes\Details.cshtml" />
     <Content Include="Views\Bienes\Edit.cshtml" />
     <Content Include="Views\Bienes\Index.cshtml" />
+    <Content Include="Views\Bienes\Enviar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
