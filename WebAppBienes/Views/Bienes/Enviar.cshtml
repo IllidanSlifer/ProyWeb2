@@ -1,0 +1,19 @@
+﻿@model WebAppBienes.Models.BienesModel
+
+@{
+    ViewBag.Title = "Enviar";
+}
+
+<h1>Enviado Con Exito!</h1>
+<br />
+<p><span>La informacion fue enviada a su correo electronico</span></p>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<br />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

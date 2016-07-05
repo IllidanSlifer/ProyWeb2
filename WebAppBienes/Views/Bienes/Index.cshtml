@@ -5,10 +5,13 @@
 }
 
 <h2>Index</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -82,11 +85,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.AreaConstrucción)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        }
+        <td>@Html.ActionLink("Enviar", "Enviar", new { id = item.ID, folioReal = item.FolioReal, areaTerreno = item.AreaTerreno, ubicacion = item.Ubicacion, precio = item.Precio, financiamiento = item.Financiamiento, frenteTerreno = item.FrenteTerreno, fondoTerreno = item.FondoTerreno, topografiaTerreno = item.TopografiaTerreno, usoSuelo = item.UsoSuelo, descripcion = item.Descripcion, areaConstruccion = item.AreaConstrucción })</td>
     </tr>
 }
 

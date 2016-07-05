@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IdentitySample.Models;
 using WebAppBienes.Models;
+using System.Web.Helpers;
 
 namespace WebAppBienes.Controllers
 {
@@ -16,6 +17,7 @@ namespace WebAppBienes.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Bienes
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Bienes.ToList());
@@ -37,6 +39,7 @@ namespace WebAppBienes.Controllers
         }
 
         // GET: Bienes/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +63,7 @@ namespace WebAppBienes.Controllers
         }
 
         // GET: Bienes/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace WebAppBienes.Controllers
         }
 
         // GET: Bienes/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -123,6 +128,43 @@ namespace WebAppBienes.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Enviar(int? id, string folioReal, double areaTerreno, string ubicacion, double precio, string financiamiento, string frenteTerreno, string fondoTerreno, string topografiaTerreno, string usoSuelo, string descripcion, double areaConstruccion)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BienesModel bienesModel = db.Bienes.Find(id);
+            if (bienesModel == null)
+            {
+                return HttpNotFound();
+            }
+            //Dim ElUser As MembershipUser;
+            //ElUser = Membership.GetUser();
+            //Men.Text = ElUser.UserName;
+            string userName = HttpContext.User.Identity.Name;
+            var eMailSent = true;
+            var eMailSubject = folioReal + ", " + ubicacion + ", " + areaTerreno + "m2";
+            if (eMailSubject == null)
+            {
+                eMailSubject = "Asunto vacío";
+            }
+            var eMailMessage = "Area del Terreno: " + areaTerreno + " m2" + Environment.NewLine + "Ubicacion: " + ubicacion + Environment.NewLine + "Precio: " + precio + Environment.NewLine + "Financiamiento: " + financiamiento + Environment.NewLine + "Frente del Terreno: " + frenteTerreno + " m2" + Environment.NewLine + "Fondo del terreno: " + fondoTerreno + " m2" + Environment.NewLine + "Topografia del terreno" + topografiaTerreno + Environment.NewLine + "Uso del suelo: " + usoSuelo + Environment.NewLine + "Descripcion: " + descripcion + Environment.NewLine + "Area de construccion: " + areaConstruccion + " m2" + Environment.NewLine;
+            if (eMailMessage == null)
+            {
+                eMailMessage = "Mensaje vacío";
+            }
+
+            WebMail.SmtpServer = "smtp.live.com";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "chacon9595@hotmail.com";
+            WebMail.From = "KeroSellS@NoReplays.com";
+            WebMail.Password = "Rtchacon";
+            WebMail.Send(to: userName, subject: eMailSubject, body: eMailMessage);
+            return View(bienesModel);
         }
     }
 }

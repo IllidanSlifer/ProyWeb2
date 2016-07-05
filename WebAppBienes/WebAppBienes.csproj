@@ -241,6 +241,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\About.jpg" />
+    <Content Include="Images\BancoPopular.png" />
+    <Content Include="Images\BCR.png" />
+    <Content Include="Images\BN.png" />
+    <Content Include="Images\Contact.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -310,6 +315,7 @@
     <Content Include="Views\Bienes\Details.cshtml" />
     <Content Include="Views\Bienes\Edit.cshtml" />
     <Content Include="Views\Bienes\Index.cshtml" />
+    <Content Include="Views\Bienes\Enviar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
