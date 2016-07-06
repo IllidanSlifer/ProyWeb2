@@ -4,7 +4,19 @@
     ViewBag.Title = "Error";
 }
 
-<hgroup>
+@*<hgroup>
     <h1 class="text-error">Error.</h1>
     <h2 class="text-error">An error occurred while processing your request.</h2>
-</hgroup>
+</hgroup>*@
+
+<h1 class="text-danger">Error.</h1>
+@{
+    if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+    }
+    else
+    {
+        <h2 class="text-danger">@ViewBag.errorMessage</h2>
+    }
+}
