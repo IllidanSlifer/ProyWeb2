@@ -263,3 +263,4 @@ C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebApp
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.dll
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.pdb
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Bienes.resources
+C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Comentarios.resources
