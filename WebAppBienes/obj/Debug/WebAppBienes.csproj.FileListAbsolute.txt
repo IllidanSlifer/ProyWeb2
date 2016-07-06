@@ -263,6 +263,7 @@ C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebApp
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.dll
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.pdb
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Bienes.resources
+<<<<<<< HEAD
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\bin\ApplicationInsights.config
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\bin\roslyn\csc.exe
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -352,3 +353,6 @@ C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.Mig
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.csproj.GenerateResource.Cache
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.dll
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.pdb
+=======
+C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Comentarios.resources
+>>>>>>> origin/master

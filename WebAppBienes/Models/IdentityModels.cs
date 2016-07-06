@@ -27,6 +27,8 @@ namespace IdentitySample.Models
         }
 
         public DbSet<BienesModel> Bienes { get; set; }
+
+
         static ApplicationDbContext()
         {
             // Set the database intializer which is run once during application start
