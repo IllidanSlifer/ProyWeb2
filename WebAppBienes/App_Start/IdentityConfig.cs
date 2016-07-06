@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using System.Net;
+using System.Configuration;
 
 namespace IdentitySample.Models
 {
@@ -86,9 +88,71 @@ namespace IdentitySample.Models
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+
+            //// Plug in your email service here to send an email.
             return Task.FromResult(0);
+            ////return configSendGridasync(message);
+            //// Credentials:
+            //var credentialUserName = "illidankj@hotmail.com";
+            //var sentFrom = "kstryper@gmail.com";
+            //var pwd = "illidan123";
+
+            //// Configure the client:
+            //System.Net.Mail.SmtpClient client =
+            //    new System.Net.Mail.SmtpClient("smtp.gmail.com");
+
+            //client.Port = 587;
+            //client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            //client.UseDefaultCredentials = false;
+
+            //// Create the credentials:
+            //System.Net.NetworkCredential credentials =
+            //    new System.Net.NetworkCredential(credentialUserName, pwd);
+
+            //client.EnableSsl = true;
+            //client.Credentials = credentials;
+
+            //// Create the message:
+            //var mail =
+            //    new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+
+            //mail.Subject = message.Subject;
+            //mail.Body = message.Body;
+
+            //// Send:
+            //return client.SendMailAsync(mail);
         }
+        //private Task configSendGridasync(IdentityMessage message)
+        //{
+        //    var myMessage = new SendGridMessage();
+        //    myMessage.AddTo(message.Destination);
+        //    myMessage.From = new System.Net.Mail.MailAddress(
+        //                        "Joe@contoso.com", "Joe S.");
+        //    myMessage.Subject = message.Subject;
+        //    myMessage.Text = message.Body;
+        //    myMessage.Html = message.Body;
+
+        //    var credentials = new NetworkCredential(
+        //               ConfigurationManager.AppSettings["mailAccount"],
+        //               ConfigurationManager.AppSettings["mailPassword"]
+        //               );
+
+        //    // Create a Web transport for sending email.
+        //    var transportWeb = new Web(credentials);
+
+        //    // Send the email.
+        //    if (transportWeb != null)
+        //    {
+        //        return transportWeb.DeliverAsync(myMessage);
+        //    }
+        //    else
+        //    {
+        //        return Task.FromResult(0);
+        //    }
+        //}
+
+
+
     }
 
     public class SmsService : IIdentityMessageService
