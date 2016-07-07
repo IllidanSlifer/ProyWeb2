@@ -353,4 +353,4 @@ C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.csp
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.dll
 C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.pdb
 C:\Users\Robert\Desktop\Nueva carpeta\WebAppBienes\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Comentarios.resources
-
+C:\Users\Kevin\Documents\GitHub\ProyWeb2\WebAppBienes\obj\Debug\WebAppBienes.Migrations.Image.resources
