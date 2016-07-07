@@ -9,10 +9,12 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
+
             <div class="col-md-3  left_col">
                 <div class="left_col scroll-view" >
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                        @*<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>*@
+                        @Html.ActionLink("KeroSells", "Index", "Home", null, new { @class = "navbar-brand" })
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
@@ -21,8 +23,8 @@
                             <img src="images/img.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <span>Welcome</span>
+                            
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -35,12 +37,30 @@
                                 <li>
                                     <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Dashboard</a></li>
+                                        
+                                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+
+                                            @if (Request.IsAuthenticated)
+                                            {
+                                                <li>@Html.ActionLink("Bienes", "Index", "Bienes")</li>
+                                            }
+
+                                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                            {
+                                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                            }
+                                        
+                                        @*<li><a href="index.html">Dashboard</a></li>
                                         <li><a href="index2.html">Dashboard2</a></li>
-                                        <li><a href="index3.html">Dashboard3</a></li>
+                                        <li><a href="index3.html">Dashboard3</a></li>*@
                                     </ul>
+                                    @Html.Partial("_LoginPartial")
                                 </li>
-                                <li>
+                                @*<li>
                                     <a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>
@@ -88,10 +108,10 @@
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
                                     </ul>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
-                        <div class="menu_section">
+                        @*<div class="menu_section">
                             <h3>Live On</h3>
                             <ul class="nav side-menu">
                                 <li>
@@ -140,7 +160,7 @@
                                 </li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                             </ul>
-                        </div>
+                        </div>*@
 
                     </div>
                     <!-- /sidebar menu -->
@@ -153,8 +173,29 @@
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
+                        @using Microsoft.AspNet.Identity
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
 
-                        <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                    </li>
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            </ul>
+                        }
+                        @*<ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="images/img.jpg" alt="">John Doe
@@ -237,14 +278,14 @@
                                     </li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul>*@
                     </nav>
                 </div>
             </div>
             <!-- /top navigation -->
         </div>
     </div>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -275,14 +316,17 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        @*<footer>
             <p>&copy; @DateTime.Now.Year - KeroSells Application</p>
-        </footer>
+        </footer>*@
     </div>
+  
 
     @Scripts.Render("~/bundles/JS")
     @RenderSection("scripts", required: false)
