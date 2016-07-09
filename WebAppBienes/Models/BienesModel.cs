@@ -19,6 +19,7 @@ namespace WebAppBienes.Models
         public string UsoSuelo { get; set; }
         public string Descripcion { get; set; }
         public double AreaConstrucción { get; set; }
+        public string Image { get; set; }
 
     }
 }

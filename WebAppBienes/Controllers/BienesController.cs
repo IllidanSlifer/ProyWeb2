@@ -50,17 +50,25 @@ namespace WebAppBienes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción")] BienesModel bienesModel)
+        public ActionResult Create([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción,Image")] BienesModel bienesModel)
         {
             if (ModelState.IsValid)
             {
                 db.Bienes.Add(bienesModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
+
             }
 
             return View(bienesModel);
+            
+                
         }
+        
+            
+
+        
 
         // GET: Bienes/Edit/5
         [Authorize(Roles = "Admin")]
