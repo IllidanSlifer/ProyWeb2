@@ -10,7 +10,7 @@ namespace IdentitySample.Controllers
             return View();
         }
 
-        [Authorize /*(Roles="Admin")*/ ]
+        //[Authorize /*(Roles="Admin")*/ ]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
@@ -18,7 +18,7 @@ namespace IdentitySample.Controllers
             return View();
         }
         //[Authorize (Roles ="User")]
-        [Authorize]
+        //[Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

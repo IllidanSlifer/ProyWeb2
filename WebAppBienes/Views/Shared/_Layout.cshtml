@@ -18,7 +18,8 @@
     <link href="~/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 @if (Request.IsAuthenticated) { 
-<body>
+
+<body style="background-color:white">
 
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -111,3 +112,12 @@ else
 }
 
 </html>
+<div class="container body-content">
+
+    @*@RenderBody()*@
+    <hr />
+    <footer>
+
+        <p>&copy; @DateTime.Now.Year - KeroSells Application</p>
+    </footer>
+</div>

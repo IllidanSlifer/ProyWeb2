@@ -50,13 +50,13 @@ namespace IdentitySample
                 clientId: "4a012f56-4b93-4b46-9dfd-4f6d272cd4be",
                 clientSecret: "2gXckLnqsobFhJ0p7XLQdOj");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "u2hxyTkxBZ8svxRtej0pW1qfl",
-            //   consumerSecret: "hReReCIBQcCAazqBDTGPF6kbOz4EytqdekPO60Kv31bAhai5vi");
+            app.UseTwitterAuthentication(
+               consumerKey: "u2hxyTkxBZ8svxRtej0pW1qfl",
+               consumerSecret: "hReReCIBQcCAazqBDTGPF6kbOz4EytqdekPO60Kv31bAhai5vi");
 
             app.UseFacebookAuthentication(
                appId: "566147480224899",
-               appSecret: "a6715f7bd1018fed4830854ec09fbb6d");
+               appSecret: "f0c0851a381d9ec660620c7e631fabda");
 
             app.UseGoogleAuthentication(
                 clientId: "866564899366-7135i89h713j0ito3debo6rm1i43tko9.apps.googleusercontent.com",

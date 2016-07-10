@@ -50,10 +50,11 @@ namespace WebAppBienes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción,Image")] BienesModel bienesModel)
+        public ActionResult Create([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción,Image")] BienesModel bienesModel, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
+                
                 db.Bienes.Add(bienesModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,10 +66,7 @@ namespace WebAppBienes.Controllers
             
                 
         }
-        
-            
-
-        
+      
 
         // GET: Bienes/Edit/5
         [Authorize(Roles = "Admin")]
@@ -91,7 +89,7 @@ namespace WebAppBienes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción")] BienesModel bienesModel)
+        public ActionResult Edit([Bind(Include = "ID,FolioReal,AreaTerreno,Ubicacion,Precio,Financiamiento,FrenteTerreno,FondoTerreno,TopografiaTerreno,UsoSuelo,Descripcion,AreaConstrucción,Image")] BienesModel bienesModel)
         {
             if (ModelState.IsValid)
             {
@@ -138,7 +136,7 @@ namespace WebAppBienes.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Enviar(int? id, string folioReal, double areaTerreno, string ubicacion, double precio, string financiamiento, string frenteTerreno, string fondoTerreno, string topografiaTerreno, string usoSuelo, string descripcion, double areaConstruccion)
+        public ActionResult Enviar(int? id, string folioReal, double areaTerreno, string ubicacion, double precio, string financiamiento, string frenteTerreno, string fondoTerreno, string topografiaTerreno, string usoSuelo, string descripcion, double areaConstruccion, string Image)
         {
             if (id == null)
             {
@@ -159,7 +157,12 @@ namespace WebAppBienes.Controllers
             {
                 eMailSubject = "Asunto vacío";
             }
-            var eMailMessage = "Area del Terreno: " + areaTerreno + " m2" + Environment.NewLine + "Ubicacion: " + ubicacion + Environment.NewLine + "Precio: " + precio + Environment.NewLine + "Financiamiento: " + financiamiento + Environment.NewLine + "Frente del Terreno: " + frenteTerreno + " m2" + Environment.NewLine + "Fondo del terreno: " + fondoTerreno + " m2" + Environment.NewLine + "Topografia del terreno" + topografiaTerreno + Environment.NewLine + "Uso del suelo: " + usoSuelo + Environment.NewLine + "Descripcion: " + descripcion + Environment.NewLine + "Area de construccion: " + areaConstruccion + " m2" + Environment.NewLine;
+            var eMailMessage = "Area del Terreno: " + areaTerreno + " m2" + Environment.NewLine + "Ubicacion: " + ubicacion 
+                + Environment.NewLine + "Precio: " + precio + Environment.NewLine + "Financiamiento: " + financiamiento + Environment.NewLine 
+                + "Frente del Terreno: " + frenteTerreno + " m2" + Environment.NewLine + "Fondo del terreno: " + fondoTerreno + " m2" 
+                + Environment.NewLine + "Topografia del terreno" + topografiaTerreno + Environment.NewLine + "Uso del suelo: " + usoSuelo 
+                + Environment.NewLine + "Descripcion: " + descripcion + Environment.NewLine + "Area de construccion: " + areaConstruccion 
+                + " m2" + Environment.NewLine +Environment.NewLine +"Image: " + Image;
             if (eMailMessage == null)
             {
                 eMailMessage = "Mensaje vacío";

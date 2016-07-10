@@ -12,90 +12,130 @@
     </p>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FolioReal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AreaTerreno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ubicacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Financiamiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FrenteTerreno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FondoTerreno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TopografiaTerreno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UsoSuelo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AreaConstrucción)
-        </th>
-        <th></th>
-    </tr>
+<tbody>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FolioReal)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FolioReal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AreaTerreno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ubicacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Financiamiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FrenteTerreno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FondoTerreno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TopografiaTerreno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsoSuelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AreaConstrucción)
-        </td>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaTerreno)
+            </th>
 
-        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Financiamiento)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FrenteTerreno)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FondoTerreno)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TopografiaTerreno)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UsoSuelo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AreaConstrucción)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+
+            </th>
+
+
+        <tr>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
         {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        }
-        <td>@Html.ActionLink("Enviar", "Enviar", new { id = item.ID, folioReal = item.FolioReal, areaTerreno = item.AreaTerreno, ubicacion = item.Ubicacion, precio = item.Precio, financiamiento = item.Financiamiento, frenteTerreno = item.FrenteTerreno, fondoTerreno = item.FondoTerreno, topografiaTerreno = item.TopografiaTerreno, usoSuelo = item.UsoSuelo, descripcion = item.Descripcion, areaConstruccion = item.AreaConstrucción })</td>
-    </tr>
-}
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FolioReal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaTerreno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ubicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Financiamiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrenteTerreno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FondoTerreno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TopografiaTerreno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsoSuelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaConstrucción)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Image)*@
 
-</table>
+                    <a href="@Html.DisplayFor(modelItem => item.Image)">Ver Imagenes</a>
+
+                </td>
+
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                <td>@Html.ActionLink("Enviar", "Enviar", new { id = item.ID, folioReal = item.FolioReal, areaTerreno = item.AreaTerreno, ubicacion = item.Ubicacion, precio = item.Precio, financiamiento = item.Financiamiento, frenteTerreno = item.FrenteTerreno, fondoTerreno = item.FondoTerreno, topografiaTerreno = item.TopografiaTerreno, usoSuelo = item.UsoSuelo, descripcion = item.Descripcion, areaConstruccion = item.AreaConstrucción, Image = item.Image })</td>
+            </tr>
+        }
+
+
+    </table>
+</tbody><div id="fb-root"></div>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=566147480224899";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-href="http://localhost:51208/Bienes" data-numposts="5"></div>
+    

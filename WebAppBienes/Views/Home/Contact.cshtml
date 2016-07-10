@@ -36,7 +36,7 @@
 <div>
     <address>
         KeroSells<br />
-        Cuidad Quesada<br />
+        Ciudad Quesada<br />
         <abbr title="Phone">Phone:</abbr>
         +506 8583 1208
     </address>
@@ -48,11 +48,12 @@
             Contact Us:
         </strong>
         <form method="POST" id="usrform">
-            User Name:<br>
+            Email:<br>
             <input type="text" name="subject" id="subject">
             <br><br>
-            <textarea rows="4" cols="50" name="message" id="message" form="usrform">Message...</textarea><br><br>
+            <textarea rows="4" cols="50" name="message" id="message" form="usrform" placeholder="Message"></textarea><br><br>
             <input type="submit" value="Submit">
+            @*<td>@Html.ActionLink("Enviar", "Contact", new { eMailSubject= eMailSent, eMailMessage = eMailSent})</td>*@
         </form><br /><br />
 
 
