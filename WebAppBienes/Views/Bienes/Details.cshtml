@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+    HttpContext context = HttpContext.Current;
+    string baseUrl = context.Request.Url.AbsoluteUri;
 }
 
 <h2>Details</h2>
@@ -108,7 +110,27 @@
     </dl>
 </div>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=566147480224899";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-href="@baseUrl" data-numposts="5"></div>
+
+
+
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) 
+
+}
+
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Back to List", "Index") 
+    }
+
